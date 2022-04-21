@@ -10,6 +10,7 @@ const buttonRef = document.querySelector('[data-start]');
 buttonRef.addEventListener('click', onButtonClick);
 
 let selectedTime = 0;
+let intervalId = 0;
 buttonRef.disabled = true;
 
 flatpickr(dateInputRef, {
@@ -32,11 +33,17 @@ flatpickr(dateInputRef, {
 
 function countdownFn(selectedTime, currentTime, convertionFn) {
   const timeLeft = convertionFn(selectedTime - currentTime); // эта запись для лучшей читабельности
-  const timeValues = Object.values(timeLeft);
+  const timeValues = Object.values(timeLeft); // Object.values можно вызвать и без нее
 
-  labelRefs.forEach((label, index) => {
-    label.textContent = addLeadingZero(timeValues[index]);
-  });
+  // эта проверка для остановки работы таймера при переключении конечной даты на прошлое время
+  if (timeLeft.seconds > 0) {
+    labelRefs.forEach((label, index) => {
+      label.textContent = addLeadingZero(timeValues[index]);
+    });
+  } else {
+    labelRefs.forEach(label => (label.textContent = '00'));
+    clearInterval(intervalId); // сброс интервала для остановки таймера и возможности начать новый отсчет
+  }
 }
 
 function convertMs(ms) {
@@ -65,7 +72,7 @@ function addLeadingZero(value) {
 function onButtonClick() {
   buttonRef.disabled = true;
 
-  setInterval(() => {
+  intervalId = setInterval(() => {
     countdownFn(selectedTime, Date.now(), convertMs);
   }, 1000);
 }
