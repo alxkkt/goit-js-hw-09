@@ -28,27 +28,28 @@
   },
   "dependencies": {
     "@vimeo/player": "^2.16.4",
+    "flatpickr": "^4.6.13",
     "lodash.throttle": "^4.1.1",
     "simplelightbox": "^2.10.3"
   },
   "customDistStructure": {
-  "config": {
-    
-    ".js": "js",
-    ".js.map": "js",
-    ".css": "css",
-    ".css.map": "css",
-    "images": [
-      ".jpg",
-      ".png"
-    ],
-    
-    ".fileExtension": "folder/in/dist",
-    "folder/in/dist": [ ".file", ".extensions" ]
-  },
-  "options": {
-    "development": true
+    "config": {
+      ".js": "js",
+      ".js.map": "js",
+      ".css": "css",
+      ".css.map": "css",
+      "images": [
+        ".jpg",
+        ".png"
+      ],
+      ".fileExtension": "folder/in/dist",
+      "folder/in/dist": [
+        ".file",
+        ".extensions"
+      ]
+    },
+    "options": {
+      "development": true
+    }
   }
 }
-}
-
