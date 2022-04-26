@@ -28,11 +28,9 @@
     "sass": "^1.32.8"
   },
   "dependencies": {
-    "@vimeo/player": "^2.16.4",
     "dist": "^0.1.2",
     "flatpickr": "^4.6.13",
-    "lodash.throttle": "^4.1.1",
-    "simplelightbox": "^2.10.3"
+    "lodash.throttle": "^4.1.1"
   },
   "customDistStructure": {
     "config": {
